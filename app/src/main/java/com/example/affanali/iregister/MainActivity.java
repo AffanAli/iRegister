@@ -2,6 +2,7 @@ package com.example.affanali.iregister;
 
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,10 +25,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fMain, new HomeFragment());
-        ft.commit();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,6 +45,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        /*
+            make the home fragment as default fragment
+            make the Home option selected on Navigation drawer
+         */
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fMain, new HomeFragment());
+        ft.commit();
+
+        navigationView.setCheckedItem(R.id.nav_home);
+    }
+
+    public void setActionTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
     @Override
@@ -120,9 +131,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_setting) {
             Toast.makeText(getApplicationContext(),"setting is selected", Toast.LENGTH_SHORT).show();
-            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fMain, new SettingFragment());
-            ft.commit();
+            Intent i = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(i);
         }
         else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(),"layout is selected", Toast.LENGTH_SHORT).show();
