@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,17 +84,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
+            Toast.makeText(getApplicationContext(),"Home is selected", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_loan) {
-
+            Toast.makeText(getApplicationContext(),"Loan Register is selected", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_credit) {
-
+            Toast.makeText(getApplicationContext(),"Credit Register is selected", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_statistic) {
-
+            Toast.makeText(getApplicationContext(),"Report is selected", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_notification) {
-
+            Toast.makeText(getApplicationContext(),"Notification is selected", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_setting) {
-
+            Toast.makeText(getApplicationContext(),"setting is selected", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_logout) {
+            Toast.makeText(getApplicationContext(),"layout is selected", Toast.LENGTH_SHORT).show();
         }
 
         // close the side Menu
