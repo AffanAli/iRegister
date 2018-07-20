@@ -1,6 +1,7 @@
 package com.example.affanali.iregister;
 
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fMain, new HomeFragment());
+        ft.commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,21 +90,48 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Toast.makeText(getApplicationContext(),"Home is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_loan) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new HomeFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_loan) {
             Toast.makeText(getApplicationContext(),"Loan Register is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_credit) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new LoanFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_credit) {
             Toast.makeText(getApplicationContext(),"Credit Register is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_statistic) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new CreditFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_statistic) {
             Toast.makeText(getApplicationContext(),"Report is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_notification) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new ReportFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_notification) {
             Toast.makeText(getApplicationContext(),"Notification is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_setting) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new NotificationFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_setting) {
             Toast.makeText(getApplicationContext(),"setting is selected", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fMain, new SettingFragment());
+            ft.commit();
+        }
+        else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(),"layout is selected", Toast.LENGTH_SHORT).show();
+            // write the logout functionality here
         }
 
-        // close the side Menu
+        /*
+            close the navigation drawer
+         */
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
