@@ -1,6 +1,7 @@
 package com.example.affanali.iregister;
 
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -86,8 +87,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            LogoutFragment logout = new LogoutFragment();
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            logout.show(ft, "logout");
         }
 
         return super.onOptionsItemSelected(item);
@@ -133,10 +136,6 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(),"setting is selected", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(i);
-        }
-        else if (id == R.id.nav_logout) {
-            Toast.makeText(getApplicationContext(),"layout is selected", Toast.LENGTH_SHORT).show();
-            // write the logout functionality here
         }
 
         /*
