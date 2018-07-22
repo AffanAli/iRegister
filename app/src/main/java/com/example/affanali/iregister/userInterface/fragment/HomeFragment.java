@@ -1,7 +1,7 @@
-package com.example.affanali.iregister;
+package com.example.affanali.iregister.userInterface.fragment;
 
 
-import android.graphics.Color;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,10 +11,12 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.affanali.iregister.MainActivity;
+import com.example.affanali.iregister.R;
+import com.example.affanali.iregister.userInterface.dialogy.DailyExpenseDetailsDialog;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +33,6 @@ public class HomeFragment extends Fragment {
     private int paddingB;
 
     public HomeFragment() {
-        // Required empty public constructor
         tableHeader = Arrays.asList("Date", "Description", "Amount", "Paid By");
         paddingL = 15;
         paddingR = 15;
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ScrollView scrollview = (ScrollView) view.findViewById(R.id.dailyExpenseTable);
+        ScrollView scrollview = view.findViewById(R.id.dailyExpenseTable);
         scrollview.addView(this.GenTable());
 
         // Inflate the layout for this fragment
@@ -90,13 +91,13 @@ public class HomeFragment extends Fragment {
                 textView.setText("Col");
                 textView.setPadding(paddingL, paddingT, paddingR, paddingB);
                 tableRow.addView(textView);
-                tableRow.setOnClickListener(new View.OnClickListener()
-                {
+                tableRow.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
-                        // open the dialog box on click
-
+                    public void onClick(View v) {
+                        DailyExpenseDetailsDialog alert = new DailyExpenseDetailsDialog();
+                        alert.setData(Arrays.asList("col1", "col1", "col1", "col1"));
+                        android.support.v4.app.FragmentManager fm = getFragmentManager();
+                        alert.show(fm, "ExpenseDetails");
                     }
                 });
             }

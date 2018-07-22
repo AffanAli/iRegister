@@ -15,6 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.affanali.iregister.userInterface.activities.SettingActivity;
+import com.example.affanali.iregister.userInterface.fragment.CreditFragment;
+import com.example.affanali.iregister.userInterface.fragment.HomeFragment;
+import com.example.affanali.iregister.userInterface.fragment.LoanFragment;
+import com.example.affanali.iregister.userInterface.dialogy.LogoutFragment;
+import com.example.affanali.iregister.userInterface.fragment.NotificationFragment;
+import com.example.affanali.iregister.userInterface.fragment.ReportFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,14 +34,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -1,7 +1,9 @@
-package com.example.affanali.iregister;
+package com.example.affanali.iregister.userInterface.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.affanali.iregister.R;
 
 public class SettingActivity extends AppCompatActivity {
 
