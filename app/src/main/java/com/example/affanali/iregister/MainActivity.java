@@ -2,9 +2,6 @@ package com.example.affanali.iregister;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,7 +16,7 @@ import com.example.affanali.iregister.userInterface.activities.SettingActivity;
 import com.example.affanali.iregister.userInterface.fragment.CreditFragment;
 import com.example.affanali.iregister.userInterface.fragment.HomeFragment;
 import com.example.affanali.iregister.userInterface.fragment.LoanFragment;
-import com.example.affanali.iregister.userInterface.dialogy.LogoutFragment;
+import com.example.affanali.iregister.userInterface.dialog.LogoutFragment;
 import com.example.affanali.iregister.userInterface.fragment.NotificationFragment;
 import com.example.affanali.iregister.userInterface.fragment.ReportFragment;
 

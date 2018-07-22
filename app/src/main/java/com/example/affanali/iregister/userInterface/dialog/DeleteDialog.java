@@ -1,4 +1,4 @@
-package com.example.affanali.iregister.userInterface.dialogy;
+package com.example.affanali.iregister.userInterface.dialog;
 
 
 import android.app.AlertDialog;
@@ -10,18 +10,17 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.affanali.iregister.MainActivity;
 import com.example.affanali.iregister.R;
 
 import java.util.List;
 
 
-public class DailyExpenseDetailsDialog extends DialogFragment {
+public class DeleteDialog extends DialogFragment {
 
-    List<String> expense;
+    List<String> record;
 
     // design constraints
     final int paddingL = 35;
@@ -29,14 +28,14 @@ public class DailyExpenseDetailsDialog extends DialogFragment {
     final int paddingT = 15;
     final int paddingB = 15;
 
-    public DailyExpenseDetailsDialog() { }
+    public DeleteDialog() {}
 
-    public void setData(List<String> list) {
-        expense = list;
+    public void setData(List<String> object) {
+        record = object;
     }
 
     public void render_data(LinearLayout ly) {
-        for (int i=0; i<this.expense.size(); i++) {
+        for (int i=0; i<this.record.size(); i++) {
             LinearLayout subLinear = new LinearLayout(getActivity());
             subLinear.setOrientation(LinearLayout.HORIZONTAL);
             LinearLayout.LayoutParams layoutForOuter = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -48,7 +47,7 @@ public class DailyExpenseDetailsDialog extends DialogFragment {
             subLinear.addView(Name);
 
             TextView Value = new TextView(getActivity());
-            Value.setText(expense.get(i));
+            Value.setText(record.get(i));
             Value.setPadding(paddingL+paddingL, paddingT, paddingR, paddingB);
             subLinear.addView(Value);
 
@@ -60,7 +59,7 @@ public class DailyExpenseDetailsDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // get the current view
-        View view = inflater.inflate(R.layout.fragment_dialy_expense_details_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_delete, null);
         /*
             update the current view
             1. get the placeholder where to render field
@@ -71,30 +70,31 @@ public class DailyExpenseDetailsDialog extends DialogFragment {
         return view;
     }
 
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = render();
+
         builder.setView(view)
-                .setTitle("Expense Details")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
+                .setMessage("Are you Sure, you want to delete this record?")
+                .setTitle("Confirmation")
+                .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {       dialog.cancel();
                     }
                 })
-                .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    // action on press of confirm button
-                    DailyExpenseDetailsEditableDialog editable = new DailyExpenseDetailsEditableDialog();
-                    editable.setData(expense);
-                    android.support.v4.app.FragmentManager fm = getFragmentManager();
-                    editable.show(fm, "editable");
+                .setNegativeButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) { deleteObj();
                     }
                 });
 
         // Create the AlertDialog object and return it
         return builder.create();
+    }
+
+    private void deleteObj() {
+
     }
 }

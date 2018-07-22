@@ -1,4 +1,4 @@
-package com.example.affanali.iregister.userInterface.dialogy;
+package com.example.affanali.iregister.userInterface.dialog;
 
 
 import android.app.AlertDialog;

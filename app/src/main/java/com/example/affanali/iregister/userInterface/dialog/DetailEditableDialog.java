@@ -1,4 +1,4 @@
-package com.example.affanali.iregister.userInterface.dialogy;
+package com.example.affanali.iregister.userInterface.dialog;
 
 
 import android.app.AlertDialog;
@@ -18,9 +18,10 @@ import com.example.affanali.iregister.R;
 import java.util.List;
 
 
-public class DailyExpenseDetailsEditableDialog extends DialogFragment {
+public class DetailEditableDialog extends DialogFragment {
 
-    List<String> expense;
+    private List<String> expense;
+    private String title = "Untitled Dialog";
 
     // design constraints
     final int paddingL = 35;
@@ -28,11 +29,13 @@ public class DailyExpenseDetailsEditableDialog extends DialogFragment {
     final int paddingT = 15;
     final int paddingB = 15;
 
-    public DailyExpenseDetailsEditableDialog() { }
+    public DetailEditableDialog() { }
 
     public void setData(List<String> list) {
         expense = list;
     }
+
+    public void setTitle(String t) { title = t; }
 
     public void render_data(LinearLayout ly) {
         for (int i=0; i<this.expense.size(); i++) {
@@ -59,7 +62,7 @@ public class DailyExpenseDetailsEditableDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // get the current view
-        View view = inflater.inflate(R.layout.fragment_daily_expense_details_editable_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_details_editable, null);
         /*
             update the current view
             1. get the placeholder where to render field
@@ -77,7 +80,7 @@ public class DailyExpenseDetailsEditableDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = render();
         builder.setView(view)
-                .setTitle("Expense Details")
+                .setTitle(title)
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

@@ -1,21 +1,21 @@
 package com.example.affanali.iregister.userInterface.fragment;
 
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.affanali.iregister.MainActivity;
 import com.example.affanali.iregister.R;
-import com.example.affanali.iregister.userInterface.dialogy.DailyExpenseDetailsDialog;
+import com.example.affanali.iregister.userInterface.dialog.DetailDialog;
 
 import java.util.Arrays;
 import java.util.List;
@@ -94,8 +94,9 @@ public class HomeFragment extends Fragment {
                 tableRow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DailyExpenseDetailsDialog alert = new DailyExpenseDetailsDialog();
+                        DetailDialog alert = new DetailDialog();
                         alert.setData(Arrays.asList("col1", "col1", "col1", "col1"));
+                        alert.setTitle("Expense Details");
                         android.support.v4.app.FragmentManager fm = getFragmentManager();
                         alert.show(fm, "ExpenseDetails");
                     }
